@@ -24,7 +24,7 @@ package object io {
   case class TextPart(partType:TextPartType, content:String){
     val evaluate : Parameters => String = f => partType match{
       case Text => content
-      case Param => Try(f(content)) getOrElse ""
+      case Param => Try(f(content)) getOrElse "?"
     }
   }
 

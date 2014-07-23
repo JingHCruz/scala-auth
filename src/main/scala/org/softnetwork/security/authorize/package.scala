@@ -7,4 +7,5 @@ package object authorize {
 
   val ALL = "*"
 
+  val ANY = "?"
 }

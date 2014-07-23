@@ -32,7 +32,7 @@ trait AccessControlComponent[T] {this:UserStoreComponent[T] with ParametersCompo
   })
 
   def permission(permission:String):AccessControl[T] = {
-    val p = new Permission(permission)
+    val p = Permission(permission)
     new AccessControl[T](principal => {
       val isPermitted:Seq[String] => Boolean = p.isPermitted(parameters)
       isPermitted(userStore.loadUserPrivileges(principal) getOrElse Seq[String]())
@@ -41,6 +41,6 @@ trait AccessControlComponent[T] {this:UserStoreComponent[T] with ParametersCompo
 }
 
 trait TestEnvironment extends AccessControlComponent[String] with UserStoreComponent[String] with ParametersComponent{
-  val userStore : UserStore[String] = new InMemoryStore()
+  val userStore : UserStore[String] = InMemoryStore()
   val parameters : Parameters = Map[String, String]()
 }
