@@ -8,4 +8,6 @@ package object authorize {
   val ALL = "*"
 
   val ANY = "?"
+
+  type Parameters = org.softnetwork.security.io.Parameters
 }

@@ -1,7 +1,6 @@
 package org.softnetwork.security.authorize
 
 import org.specs2.mutable._
-import org.softnetwork.security.io._
 
 /**
  * Created by smanciot on 24/07/14.

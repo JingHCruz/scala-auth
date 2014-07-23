@@ -1,7 +1,6 @@
 package org.softnetwork.security.authorize
 
 import org.softnetwork.security._
-import org.softnetwork.security.io._
 import org.softnetwork.security.util._
 
 /**
