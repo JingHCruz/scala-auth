@@ -11,3 +11,11 @@ package object authorize {
 
   type Parameters = org.softnetwork.security.io.Parameters
 }
+
+package authorize {
+
+  case class InMemoryParameters(var parameters:Map[String, String]=Map[String, String]()) extends Parameters{
+    def apply(key:String):String = parameters.getOrElse(key, "")
+  }
+
+}
