@@ -41,5 +41,5 @@ trait AccessControlComponent[T] {this:UserStoreComponent[T] with ParametersCompo
 
 trait TestEnvironment extends AccessControlComponent[String] with UserStoreComponent[String] with ParametersComponent{
   val userStore : UserStore[String] = InMemoryStore()
-  val parameters : Parameters = Map[String, String]()
+  val parameters : Parameters = InMemoryParameters()
 }
