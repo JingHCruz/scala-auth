@@ -15,7 +15,7 @@ package object authorize {
 package authorize {
 
   case class InMemoryParameters(var parameters:Map[String, String]=Map[String, String]()) extends Parameters{
-    def apply(key:String):String = parameters.getOrElse(key, "")
+    def apply(key:String):Option[String] = parameters.get(key)
   }
 
 }

@@ -7,7 +7,7 @@ import scala.util.Try
  */
 package object io {
 
-  type Parameters = String => String
+  type Parameters = String => Option[String]
 
   /**
    * takes longest prefix of characters that is different to the character specified
@@ -49,7 +49,10 @@ package io {
   case class TextPart(partType:TextPartType, content:String){
     val evaluate : Parameters => String = f => partType match{
       case Text => content
-      case Param => Try(f(content)) getOrElse "?"
+      case Param => f(content) match {
+        case Some(s) => s
+        case None => "?"
+      }
     }
   }
 
