@@ -11,6 +11,7 @@ class AccessControl[T](val accessRule:Filter[T]) {
   def &&(other:AccessControl[T]):AccessControl[T] = apply(every(accessRule, other.accessRule))
   def ||(other:AccessControl[T]):AccessControl[T] = apply(any(accessRule, other.accessRule))
   def unary_! = apply(complement(accessRule))
+  def apply():T => Boolean = accessRule
   def apply(principal:T):Boolean = accessRule(principal)
   def apply(f:Filter[T]) : AccessControl[T] = new AccessControl[T](f)
 }

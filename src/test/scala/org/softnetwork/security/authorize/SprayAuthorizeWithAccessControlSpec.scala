@@ -20,7 +20,7 @@ object SprayAuthorizeWithAccessControlSpec extends Specification with Specs2Rout
   store.users +:= "Peter"
   store.roles += "Peter" -> Seq[String]("r1", "r2")
   store.userPrivileges += "Peter" -> Seq[String]("p0","p1:*", "p2:subp2")
-  def hasPermissionToPetersLair(userName: String) = (role("r1") && permission("p0"))(userName)
+  val hasPermissionToPetersLair:String => Boolean = (role("r1") && permission("p0"))()
 
   val route =
     sealRoute {
