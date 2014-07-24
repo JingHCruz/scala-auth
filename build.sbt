@@ -20,5 +20,6 @@ resolvers ++= Seq(
 libraryDependencies ++= Seq(
   "io.spray"           % "spray-routing" % sprayVersion  % "provided",
   "com.typesafe.akka" %% "akka-actor"    % akkaVersion   % "provided",
+  "io.spray"           % "spray-testkit" % sprayVersion,
   "org.specs2"        %% "specs2"        % specs2Version % "test"
 )
