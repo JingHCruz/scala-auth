@@ -20,15 +20,13 @@ object SprayAuthorizeWithAccessControlSpec extends Specification with Specs2Rout
   store.users +:= "Peter"
   store.roles += "Peter" -> Seq[String]("r1", "r2")
   store.userPrivileges += "Peter" -> Seq[String]("p0","p1:*", "p2:subp2")
-  def hasPermissionToPetersLair(userName: String) = role("role1")(userName)
+  def hasPermissionToPetersLair(userName: String) = (role("r1") && permission("p0"))(userName)
 
   val route =
     sealRoute {
       authenticate(BasicAuth(realm = "secure site", config = config, createUser = extractUser _)) { userName =>
         path("peters-lair") {
-          authorize(
-            (role("r1") && permission("p0"))(userName)
-          ) {
+          authorize(hasPermissionToPetersLair(userName)) {
             complete(s"'$userName' visited Peter's lair")
           }
         }
