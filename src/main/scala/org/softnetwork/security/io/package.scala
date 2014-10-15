@@ -1,7 +1,5 @@
 package org.softnetwork.security
 
-import scala.util.Try
-
 /**
  * Created by smanciot on 23/07/14.
  */
